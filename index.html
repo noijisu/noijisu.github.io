@@ -263,6 +263,51 @@
       gap: 10px;
     }
 
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(99,102,241,0.3);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(99,102,241,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     /* About */
     .about-content {
       display: grid;
@@ -355,8 +400,11 @@
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .product-card {
+      .product-card, .service-card {
         padding: 28px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
       }
       section {
         padding: 80px 0;
@@ -440,6 +488,37 @@
     </div>
   </section>
 
+  <!-- Services -->
+  <section>
+    <div class="container">
+      <div class="section-label fade-in">Services</div>
+      <h2 class="section-title fade-in">サービス</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>業務自動化</h3>
+          <p>手作業で行っている日常業務をスクリプトやツールで自動化。データ入力、ファイル処理、レポート生成など、繰り返し作業を効率化します。</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          </div>
+          <h3>業務効率化コンサルティング</h3>
+          <p>現在のワークフローを分析し、ボトルネックを特定。最適なツール選定から導入・運用まで一貫してサポートします。</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>社内ツール開発</h3>
+          <p>Excel管理からの脱却、社内向けWebアプリやスプレッドシート連携ツールなど、業務に合わせたカスタムツールを開発します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About -->
   <section>
     <div class="container">
@@ -448,7 +527,8 @@
           <div class="section-label">About</div>
           <h2 class="section-title" style="margin-bottom: 24px;">balance works</h2>
           <p>「使いやすさ」と「ちょうどいい機能」のバランスを大切にする個人開発スタジオです。</p>
-          <p>モバイルアプリからWebサービスまで、日常の課題を解決するプロダクトを企画・設計・開発しています。</p>
+          <p>モバイルアプリやWebサービスの自社開発に加え、業務自動化・業務効率化のご相談や実装もお受けしています。</p>
+          <p>手作業の繰り返しをなくしたい、社内ツールを改善したいなど、お気軽にご相談ください。</p>
         </div>
         <div class="stats fade-in">
           <div class="stat">
