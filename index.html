@@ -222,18 +222,33 @@
     .badge-ios { background: rgba(99,102,241,0.1); color: var(--accent); }
     .badge-web { background: rgba(16,185,129,0.1); color: #059669; }
 
+    .product-screenshot-wrap {
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .product-screenshot-wrap.mobile {
+      border: none;
+      background: transparent;
+    }
+
     .product-screenshot {
       width: 100%;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
+      height: 100%;
       object-fit: cover;
+      border-radius: 12px;
     }
 
     .product-screenshot.mobile {
-      width: 200px;
-      margin: 0 auto 24px;
-      display: block;
+      width: auto;
+      height: 100%;
       border-radius: 16px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     }
@@ -467,7 +482,9 @@
           <div class="product-icon">
             <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
-          <img src="images/myshisan.jpg" alt="マイ資産管理 スクリーンショット" class="product-screenshot mobile">
+          <div class="product-screenshot-wrap mobile">
+            <img src="images/myshisan.jpg" alt="マイ資産管理 スクリーンショット" class="product-screenshot mobile">
+          </div>
           <span class="product-badge badge-ios">iOS App</span>
           <h3>マイ資産管理</h3>
           <p>日本株・米国株・投資信託の保有資産をまとめて管理できるポートフォリオ管理アプリ。リアルタイム株価取得、配当金カレンダー、セクター分析、資産推移チャートを搭載。</p>
@@ -488,7 +505,9 @@
           <div class="product-icon">
             <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <img src="images/runshoe.png" alt="Runshoe スクリーンショット" class="product-screenshot">
+          <div class="product-screenshot-wrap">
+            <img src="images/runshoe.png" alt="Runshoe スクリーンショット" class="product-screenshot">
+          </div>
           <span class="product-badge badge-web">Web</span>
           <h3>Runshoe（ランシュー）</h3>
           <p>ランニングシューズの情報・レビュープラットフォーム。ブランド・カテゴリ別のシューズ検索、スペック比較、ユーザーレビュー、マガジン記事を提供。</p>
