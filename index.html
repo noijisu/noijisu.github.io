@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0b;
-      --bg-card: #141416;
-      --bg-card-hover: #1a1a1e;
-      --text: #f5f5f7;
-      --text-secondary: #8e8e93;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --border: #2a2a2e;
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f5f5f7;
+      --text: #1a1a2e;
+      --text-secondary: #64748b;
+      --accent: #4f46e5;
+      --accent-light: #6366f1;
+      --border: #e2e8f0;
       --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
       --gradient-2: linear-gradient(135deg, #10b981, #34d399);
     }
@@ -37,7 +37,7 @@
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
     }
@@ -69,7 +69,7 @@
       transform: translateX(-50%);
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -88,7 +88,7 @@
       letter-spacing: -1.5px;
       line-height: 1.1;
       margin-bottom: 20px;
-      background: linear-gradient(135deg, #f5f5f7 0%, #a1a1aa 100%);
+      background: linear-gradient(135deg, #1a1a2e 0%, #4f46e5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -118,7 +118,7 @@
     .scroll-indicator .line {
       width: 1px;
       height: 40px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
+      background: linear-gradient(to bottom, var(--accent-light), transparent);
     }
 
     @keyframes float {
@@ -171,6 +171,7 @@
       background: var(--bg-card-hover);
       border-color: rgba(99,102,241,0.3);
       transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
     }
 
     .product-card::before {
@@ -217,8 +218,8 @@
       margin-bottom: 16px;
     }
 
-    .badge-ios { background: rgba(99,102,241,0.15); color: var(--accent-light); }
-    .badge-web { background: rgba(16,185,129,0.15); color: #34d399; }
+    .badge-ios { background: rgba(99,102,241,0.1); color: var(--accent); }
+    .badge-web { background: rgba(16,185,129,0.1); color: #059669; }
 
     .product-card h3 {
       font-size: 24px;
@@ -243,7 +244,7 @@
       font-size: 12px;
       padding: 5px 12px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.05);
+      background: #f1f5f9;
       color: var(--text-secondary);
       border: 1px solid var(--border);
     }
@@ -282,13 +283,14 @@
       background: var(--bg-card-hover);
       border-color: rgba(99,102,241,0.3);
       transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
     }
 
     .service-icon {
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: rgba(99,102,241,0.15);
+      background: rgba(99,102,241,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -339,7 +341,7 @@
     .stat-value {
       font-size: 32px;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--accent-light), #c084fc);
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -379,7 +381,7 @@
 
     .contact-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(99,102,241,0.3);
+      box-shadow: 0 8px 30px rgba(99,102,241,0.25);
     }
 
     /* Footer */
