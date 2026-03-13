@@ -286,15 +286,22 @@
       border: 1px solid var(--border);
     }
 
+    .product-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
     .product-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 24px;
       font-size: 14px;
       font-weight: 500;
       color: var(--accent-light);
       transition: gap 0.3s;
+      text-decoration: none;
     }
 
     .product-card:hover .product-link {
@@ -508,7 +515,7 @@
       <h2 class="section-title fade-in">プロダクト</h2>
       <div class="products-grid">
 
-        <a class="product-card fade-in" href="https://apps.apple.com/app/id6760156378" target="_blank">
+        <div class="product-card fade-in">
           <div class="product-icon">
             <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
@@ -525,11 +532,17 @@
             <span>株式投資</span>
             <span>ポートフォリオ</span>
           </div>
-          <div class="product-link">
-            App Store で見る
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div class="product-links">
+            <a class="product-link" href="https://apps.apple.com/app/id6760156378" target="_blank">
+              App Store で見る
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="product-link" href="https://play.google.com/store/apps/details?id=com.myshisankanri.app" target="_blank">
+              Google Play で見る
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
-        </a>
+        </div>
 
         <a class="product-card fade-in" href="https://runshoe.net" target="_blank">
           <div class="product-icon">
