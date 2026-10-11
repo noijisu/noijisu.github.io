@@ -5,526 +5,151 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balance Works</title>
   <meta name="description" content="Balance Works - モバイルアプリ & Webサービスの企画・設計・開発">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='16' fill='white'%3Ebw%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#031522">
+  <link rel="icon" type="image/svg+xml" href="images/balance-works.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #fafafa;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f5f5f7;
-      --text: #1a1a2e;
-      --text-secondary: #64748b;
-      --accent: #4f46e5;
-      --accent-light: #6366f1;
-      --border: #e2e8f0;
-      --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
-      --gradient-2: linear-gradient(135deg, #10b981, #34d399);
-      --gradient-3: linear-gradient(135deg, #f97559, #fbb859);
+    :root { --bg:#fff; --text:#071b2b; --text-secondary:#546777; --accent:#006ce5; --border:#dce4eb; --navy:#031522; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:32px; }
+    body { font-family:'Inter','Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+    a { color:inherit; }
+    a:focus-visible { outline:3px solid #0078ff; outline-offset:6px; }
+    .container { width:min(1160px,100% - 80px); margin:auto; }
+    .skip-link { position:absolute; top:-100px; left:16px; z-index:10; padding:12px; background:white; }
+    .skip-link:focus { top:12px; }
+    .site-header { background:var(--navy); color:white; }
+    .header-inner { min-height:100px; display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1px solid #ffffff20; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; font-size:19px; font-weight:600; letter-spacing:-.5px; line-height:1.4; }
+    .brand-sub { display:block; font-size:8px; letter-spacing:2.1px; color:#9fb0bf; margin-top:4px; }
+    nav { display:flex; align-items:center; gap:32px; }
+    nav a { text-decoration:none; font-size:12px; color:#c0cdd8; }
+    nav a:hover { color:white; }
+    nav .nav-contact { border:1px solid #496170; padding:9px 18px; color:white; }
+    .nav-contact span { margin-left:16px; color:#3695ff; }
+    .hero { background:var(--navy); color:white; position:relative; overflow:hidden; }
+    .hero-inner { min-height:650px; display:grid; grid-template-columns:1.2fr 1fr; align-items:center; gap:40px; padding-top:50px; padding-bottom:75px; }
+    .eyebrow { font-size:11px; letter-spacing:3px; color:#a6bbcd; display:flex; align-items:center; gap:12px; margin-bottom:26px; }
+    .eyebrow span { width:23px; height:7px; background:#0078ff; transform:skew(-30deg); }
+    h1 { font-size:clamp(52px,6.6vw,88px); letter-spacing:-4px; line-height:1.06; font-weight:600; margin-bottom:32px; }
+    h1 span { color:#268aff; }
+    .hero p { color:#a6bbcd; font-size:13px; line-height:2.1; }
+    .hero .hero-lead { color:white; font-size:21px; font-weight:500; margin-bottom:12px; }
+    .hero-button { display:inline-flex; align-items:center; gap:44px; padding:14px 24px; background:#0078ff; color:white; text-decoration:none; font-size:13px; margin-top:32px; transition:background .2s; }
+    .hero-button:hover { background:#0060cc; }
+    .hero-art { aspect-ratio:1; position:relative; display:grid; place-items:center; }
+    .hero-art img { width:86%; height:auto; z-index:1; }
+    .orbit { position:absolute; border:1px solid #254052; border-radius:50%; width:100%; height:100%; }
+    .orbit-two { width:119%; height:119%; border-style:dashed; opacity:.35; }
+    .orbit-one::after { content:''; width:9px; height:9px; background:#0078ff; border-radius:50%; position:absolute; top:15%; right:13%; box-shadow:0 0 24px #0078ff; }
+    .art-caption { position:absolute; bottom:-34px; font-size:9px; letter-spacing:2px; color:#8098ac; }
+    .hero-bottom { display:flex; justify-content:space-between; padding:23px 0; border-top:1px solid #ffffff20; font-size:9px; letter-spacing:1.7px; color:#92a7b9; gap:20px; }
+    .hero-bottom a { text-decoration:none; }
+    .hero-bottom a span { margin-left:22px; color:#268aff; }
+    section { padding:100px 0; }
+    .section-label { color:var(--accent); text-transform:uppercase; font-size:11px; font-weight:600; letter-spacing:2.5px; display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .section-label::before { content:''; width:20px; height:2px; background:currentColor; }
+    .section-title { font-size:clamp(26px,3.5vw,38px); font-weight:600; letter-spacing:-1px; line-height:1.4; margin-bottom:44px; }
+    .products-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
+    .product-card { padding:28px; border:1px solid var(--border); text-decoration:none; display:block; position:relative; transition:border-color .2s,box-shadow .2s; }
+    .product-card:hover { border-color:#0078ff; box-shadow:0 12px 32px #03152208; }
+    .product-icon { display:none; }
+    .product-screenshot-wrap { height:300px; background:#eef3f7; overflow:hidden; margin-bottom:28px; display:flex; align-items:center; justify-content:center; }
+    .product-screenshot { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .product-screenshot-wrap.mobile { background:#eaf1f8; padding:22px; }
+    .product-screenshot.mobile { width:auto; max-width:100%; height:100%; border-radius:12px; box-shadow:0 8px 22px #03152220; object-fit:contain; }
+    .product-badge { display:inline-block; font-size:10px; color:var(--accent); background:#edf5ff; padding:3px 10px; margin-bottom:14px; letter-spacing:1px; }
+    .product-card h3 { font-size:23px; font-weight:600; margin-bottom:12px; }
+    .product-card p { color:var(--text-secondary); font-size:13px; margin-bottom:22px; }
+    .product-tags { display:flex; flex-wrap:wrap; gap:6px 14px; }
+    .product-tags span { font-size:10px; color:#627586; }
+    .product-links { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:24px; }
+    .product-link { display:inline-flex; gap:12px; align-items:center; font-size:12px; font-weight:600; text-decoration:none; color:var(--accent); }
+    .product-card > .product-link { margin-top:24px; }
+    #services { background:#f3f6f9; }
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:32px; }
+    .service-card { border-top:1px solid #bfcdd8; padding-top:32px; }
+    .service-icon { color:var(--accent); margin-bottom:20px; }
+    .service-card h3 { font-size:22px; margin-bottom:14px; font-weight:500; }
+    .service-card p { color:var(--text-secondary); font-size:14px; }
+    #skills { padding:70px 0; border-bottom:1px solid var(--border); }
+    #skills .section-title { font-size:26px; margin-bottom:28px; }
+    .skills-grid { display:flex; flex-wrap:wrap; gap:12px; }
+    .skill-tag { font-size:12px; padding:9px 16px; border:1px solid var(--border); background:white; }
+    .about-content { display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:center; }
+    .about-text p { font-size:14px; color:var(--text-secondary); margin-bottom:16px; }
+    .stats { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .stat { border-bottom:1px solid var(--border); padding:12px 0 24px; }
+    .stat-value { font-size:34px; font-weight:500; letter-spacing:-1px; }
+    .stat:first-child .stat-value { color:var(--accent); }
+    .stat-label { font-size:11px; color:var(--text-secondary); }
+    .contact { background:var(--navy); color:white; padding:85px 0; }
+    .contact .container { position:relative; }
+    .contact .section-label { color:#409aff; }
+    .contact .section-title { margin-bottom:20px; }
+    .contact p { color:#a6bbcd; font-size:14px; margin-bottom:30px; }
+    .contact-link { display:inline-flex; align-items:center; gap:16px; padding:15px 28px; background:#0078ff; color:white; text-decoration:none; font-size:13px; }
+    .contact-link:hover { background:#0060cc; }
+    footer { background:var(--navy); color:#91a6b7; font-size:10px; letter-spacing:.5px; }
+    footer .container { padding:25px 0; border-top:1px solid #ffffff20; }
+    @media(max-width:900px) { .hero-inner { min-height:580px; gap:24px; } h1 { letter-spacing:-2.5px; } .hero-art { margin-right:10px; } .about-content { gap:40px; } nav { gap:20px; } }
+    @media(max-width:640px) {
+      .container { width:calc(100% - 40px); }
+      .header-inner { min-height:85px; flex-wrap:wrap; padding:16px 0; gap:16px; }
+      .brand { font-size:17px; } .brand img { width:36px; height:36px; }
+      nav { width:100%; justify-content:space-between; gap:12px; } nav a { font-size:11px; } nav .nav-contact { padding:5px 12px; }
+      .hero-inner { grid-template-columns:1fr; padding:60px 0 65px; gap:50px; }
+      h1 { font-size:64px; } .hero .hero-lead { font-size:19px; } .hero p { font-size:12px; } .hero p br { display:none; }
+      .hero-art { width:65%; max-width:290px; margin:0 auto 10px; } .art-caption { font-size:7px; letter-spacing:1px; bottom:-25px; }
+      .hero-bottom { font-size:8px; letter-spacing:1px; } .hero-bottom > span { max-width:160px; } .hero-bottom a { align-self:center; } .hero-bottom a span { margin-left:8px; }
+      section { padding:68px 0; } .section-title { margin-bottom:30px; }
+      .products-grid,.services-grid,.about-content { grid-template-columns:1fr; gap:28px; }
+      .product-card { padding:20px; } .product-screenshot-wrap { height:260px; } .product-card h3 { font-size:21px; }
+      .services-grid { gap:36px; } .about-content { gap:24px; } .stat-value { font-size:30px; }
+      .contact { padding:65px 0; } .contact p { font-size:13px; }
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html {
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Noise texture overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding: 0 24px;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(600px, 100vw);
-      height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .logo {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 72px);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #4f46e5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 520px;
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-secondary);
-      font-size: 12px;
-      letter-spacing: 2px;
-      animation: float 2s ease-in-out infinite;
-    }
-
-    .scroll-indicator .line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--accent-light), transparent);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
-    }
-
-    /* Section */
-    section {
-      padding: 120px 0;
-    }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 60px;
-    }
-
-    /* Products */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr));
-      gap: 24px;
-    }
-
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .product-card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(99,102,241,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-    }
-
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      border-radius: 20px 20px 0 0;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .product-card:hover::before {
-      opacity: 1;
-    }
-
-    .product-card:nth-child(1)::before { background: var(--gradient-1); }
-    .product-card:nth-child(2)::before { background: var(--gradient-2); }
-    .product-card:nth-child(3)::before { background: var(--gradient-3); }
-
-    .product-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-    .product-card:nth-child(1) .product-icon { background: var(--gradient-1); }
-    .product-card:nth-child(2) .product-icon { background: var(--gradient-2); }
-    .product-card:nth-child(3) .product-icon { background: var(--gradient-3); }
-
-    .product-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-    }
-
-    .badge-ios { background: rgba(99,102,241,0.1); color: var(--accent); }
-    .badge-web { background: rgba(16,185,129,0.1); color: #059669; }
-    .badge-web-warm { background: rgba(249,117,89,0.12); color: #c14b30; }
-
-    .product-screenshot-wrap {
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-    }
-
-    .product-screenshot-wrap.mobile {
-      border: none;
-      background: transparent;
-    }
-
-    .product-screenshot {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .product-screenshot.mobile {
-      width: auto;
-      height: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    }
-
-    .product-card h3 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .product-card p {
-      color: var(--text-secondary);
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    .product-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .product-tags span {
-      font-size: 12px;
-      padding: 5px 12px;
-      border-radius: 8px;
-      background: #f1f5f9;
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-
-    .product-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .product-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--accent-light);
-      transition: gap 0.3s;
-      text-decoration: none;
-    }
-
-    .product-card:hover .product-link {
-      gap: 10px;
-    }
-
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .service-card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(99,102,241,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(99,102,241,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-light);
-      margin-bottom: 20px;
-    }
-
-    .service-card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill-tag {
-      padding: 10px 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      transition: all 0.3s;
-    }
-
-    .skill-tag:hover {
-      border-color: rgba(99,102,241,0.3);
-      background: var(--bg-card-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-
-    /* About */
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-text p {
-      color: var(--text-secondary);
-      font-size: 16px;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .stat {
-      padding: 28px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    /* Contact */
-    .contact {
-      text-align: center;
-      padding: 120px 0;
-    }
-
-    .contact p {
-      color: var(--text-secondary);
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      background: var(--gradient-1);
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-
-    .contact-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(99,102,241,0.25);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 13px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .product-card, .service-card {
-        padding: 28px;
-      }
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      section {
-        padding: 80px 0;
-      }
-    }
-
-    /* Fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="logo">Balance Works</div>
-    <h1>Build with<br>Precision</h1>
-    <p>モバイルアプリ & Webサービスの企画・設計・開発</p>
-    <div class="scroll-indicator">
-      <span>SCROLL</span>
-      <div class="line"></div>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Balance Works ホーム"><img src="images/balance-works.svg" width="44" height="44" alt=""><span>Balance Works<span class="brand-sub">DESIGN & DEVELOPMENT</span></span></a>
+      <nav aria-label="メインナビゲーション"><a href="#products">Products</a><a href="#services">Services</a><a href="#about">About</a><a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a></nav>
     </div>
+  </header>
+  <main id="main">
+  <div class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> BALANCE WORKS</div>
+        <h1>Build with<br><span>Precision.</span></h1>
+        <p class="hero-lead">アイデアを、確かなかたちに。</p>
+        <p>モバイルアプリ・Webサービスの企画から設計・開発まで。<br>使う人と向き合い、日々の課題をテクノロジーで解決します。</p>
+        <a class="hero-button" href="#products">プロダクトを見る <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img src="images/balance-works.svg" width="400" height="400" alt=""><span class="art-caption">IDEA → DESIGN → DEVELOPMENT</span></div>
+    </div>
+    <div class="container hero-bottom"><span>MOBILE APPS / WEB SERVICES / AUTOMATION</span><a href="#products">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
   </div>
 
   <!-- Products -->
-  <section>
+  <section id="products">
     <div class="container">
       <div class="section-label fade-in">Products</div>
       <h2 class="section-title fade-in">プロダクト</h2>
       <div class="products-grid">
 
         <div class="product-card fade-in">
-          <div class="product-icon">
+          <div class="product-icon" aria-hidden="true">
             <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
           <div class="product-screenshot-wrap mobile">
-            <img src="images/myshisan.jpg" alt="マイ資産管理 スクリーンショット" class="product-screenshot mobile">
+            <img src="images/myshisan.jpg" alt="マイ資産管理 スクリーンショット" class="product-screenshot mobile" loading="lazy">
           </div>
           <span class="product-badge badge-ios">iOS / Android</span>
           <h3>マイ資産管理</h3>
@@ -537,23 +162,23 @@
             <span>ポートフォリオ</span>
           </div>
           <div class="product-links">
-            <a class="product-link" href="https://apps.apple.com/app/id6760156378" target="_blank">
+            <a class="product-link" href="https://apps.apple.com/app/id6760156378" target="_blank" rel="noopener noreferrer">
               App Store で見る
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a class="product-link" href="https://play.google.com/store/apps/details?id=com.myshisankanri.app" target="_blank">
+            <a class="product-link" href="https://play.google.com/store/apps/details?id=com.myshisankanri.app" target="_blank" rel="noopener noreferrer">
               Google Play で見る
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <a class="product-card fade-in" href="https://runshoe.net" target="_blank">
-          <div class="product-icon">
+        <a class="product-card fade-in" href="https://runshoe.net" target="_blank" rel="noopener noreferrer">
+          <div class="product-icon" aria-hidden="true">
             <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <div class="product-screenshot-wrap">
-            <img src="images/runshoe.png" alt="Runshoe スクリーンショット" class="product-screenshot">
+            <img src="images/runshoe.png" alt="Runshoe スクリーンショット" class="product-screenshot" loading="lazy">
           </div>
           <span class="product-badge badge-web">Web</span>
           <h3>Runshoe（ランシュー）</h3>
@@ -571,35 +196,12 @@
           </div>
         </a>
 
-        <a class="product-card fade-in" href="https://chiiku-toys.com/" target="_blank">
-          <div class="product-icon">
-            <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16L12 2z"/></svg>
-          </div>
-          <div class="product-screenshot-wrap">
-            <img src="images/chiiku-toys.png" alt="ちいくトイズ スクリーンショット" class="product-screenshot">
-          </div>
-          <span class="product-badge badge-web-warm">Web</span>
-          <h3>ちいくトイズ</h3>
-          <p>0〜6歳の未就学児向け知育玩具を年齢別・カテゴリ別に比較するメディア。発達段階に合わせたおもちゃ選びをサポート。</p>
-          <div class="product-tags">
-            <span>Next.js</span>
-            <span>TypeScript</span>
-            <span>microCMS</span>
-            <span>Gemini API</span>
-            <span>知育玩具</span>
-          </div>
-          <div class="product-link">
-            サイトを見る
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-
-      </div>
+</div>
     </div>
   </section>
 
   <!-- Services -->
-  <section>
+  <section id="services">
     <div class="container">
       <div class="section-label fade-in">Services</div>
       <h2 class="section-title fade-in">サービス</h2>
@@ -618,12 +220,19 @@
           <h3>社内ツール開発</h3>
           <p>Excel管理からの脱却、社内向けWebアプリやスプレッドシート連携ツールなど、業務に合わせたカスタムツールを開発します。</p>
         </div>
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+          </div>
+          <h3>kintoneアプリの設計・カスタマイズ</h3>
+          <p>業務フローに合わせたkintoneアプリの設計・構築から、JavaScriptによるカスタマイズ、外部サービスとの連携まで対応。日々の業務に使いやすい仕組みを整えます。</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Skills -->
-  <section>
+  <section id="skills">
     <div class="container">
       <div class="section-label fade-in">Skills</div>
       <h2 class="section-title fade-in">スキル</h2>
@@ -642,7 +251,7 @@
   </section>
 
   <!-- About -->
-  <section>
+  <section id="about">
     <div class="container">
       <div class="about-content">
         <div class="about-text fade-in">
@@ -653,7 +262,7 @@
         </div>
         <div class="stats fade-in">
           <div class="stat">
-            <div class="stat-value">3</div>
+            <div class="stat-value">2</div>
             <div class="stat-label">プロダクト</div>
           </div>
           <div class="stat">
@@ -674,7 +283,7 @@
   </section>
 
   <!-- Contact -->
-  <section class="contact">
+  <section class="contact" id="contact">
     <div class="container fade-in">
       <div class="section-label">Contact</div>
       <h2 class="section-title">お問い合わせ</h2>
@@ -686,24 +295,14 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2026 Balance Works. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 
 </body>
 </html>
