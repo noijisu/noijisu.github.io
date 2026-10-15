@@ -74,9 +74,8 @@
     .service-icon { color:var(--accent); margin-bottom:20px; }
     .service-card h3 { font-size:22px; margin-bottom:14px; font-weight:500; }
     .service-card p { color:var(--text-secondary); font-size:14px; }
-    #skills { padding:70px 0; border-bottom:1px solid var(--border); }
-    #skills .section-title { font-size:26px; margin-bottom:28px; }
-    .skills-grid { display:flex; flex-wrap:wrap; gap:12px; }
+    .skills-grid { display:flex; flex-wrap:wrap; gap:8px; }
+    .profile-skills { margin-top:20px; }
     .skill-tag { font-size:12px; padding:9px 16px; border:1px solid var(--border); background:white; }
     .about-content { display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:center; }
     .about-text p { font-size:14px; color:var(--text-secondary); margin-bottom:16px; }
@@ -85,6 +84,11 @@
     .stat-value { font-size:34px; font-weight:500; letter-spacing:-1px; }
     .stat:first-child .stat-value { color:var(--accent); }
     .stat-label { font-size:11px; color:var(--text-secondary); }
+    .profile { margin-top:56px; padding-top:40px; border-top:1px solid var(--border); display:grid; grid-template-columns:160px minmax(0,1fr); gap:32px; align-items:center; }
+    .profile-image { display:block; width:100%; height:auto; aspect-ratio:1; border-radius:12px; }
+    .profile-name { font-size:28px; font-weight:600; line-height:1.4; color:#2e4236; margin-bottom:8px; }
+    .profile-copy p { max-width:680px; font-size:14px; color:var(--text-secondary); }
+    .profile-copy p + p { margin-top:12px; }
     .contact { background:var(--navy); color:white; padding:85px 0; }
     .contact .container { position:relative; }
     .contact .section-label { color:#409aff; }
@@ -109,6 +113,8 @@
       .product-card { padding:20px; } .product-screenshot-wrap { height:260px; } .product-card h3 { font-size:21px; }
       .services-grid { gap:36px; } .about-content { gap:24px; } .stat-value { font-size:30px; }
       .contact { padding:65px 0; } .contact p { font-size:13px; }
+      .profile { grid-template-columns:1fr; gap:24px; margin-top:36px; padding-top:32px; }
+      .profile-image { width:120px; }
     }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
   </style>
@@ -127,9 +133,9 @@
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="eyebrow"><span></span> BALANCE WORKS</div>
-        <h1>Build with<br><span>Precision.</span></h1>
-        <p class="hero-lead">アイデアを、確かなかたちに。</p>
-        <p>モバイルアプリ・Webサービスの企画から設計・開発まで。<br>使う人と向き合い、日々の課題をテクノロジーで解決します。</p>
+        <h1>Less Friction.<br><span>More Flow.</span></h1>
+        <p class="hero-lead">日々の「もっとこうなれば」を、かたちに。</p>
+        <p>仕事のひと手間も、暮らしの中の小さな不便も。<br>使う人の視点で、アプリやWebサービス、業務の仕組みをつくります。</p>
         <a class="hero-button" href="#products">プロダクトを見る <span aria-hidden="true">↗</span></a>
       </div>
       <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img src="images/balance-works.svg" width="400" height="400" alt=""><span class="art-caption">IDEA → DESIGN → DEVELOPMENT</span></div>
@@ -231,25 +237,6 @@
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-label fade-in">Skills</div>
-      <h2 class="section-title fade-in">スキル</h2>
-      <div class="skills-grid fade-in">
-        <span class="skill-tag">PHP</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">React / React Native</span>
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">生成AI</span>
-        <span class="skill-tag">kintone</span>
-      </div>
-    </div>
-  </section>
-
   <!-- About -->
   <section id="about">
     <div class="container">
@@ -257,8 +244,8 @@
         <div class="about-text fade-in">
           <div class="section-label">About</div>
           <h2 class="section-title" style="margin-bottom: 24px;">Balance Works</h2>
-          <p>モバイルアプリ・Webサービスの企画から設計・開発・運用までを一貫して手がけています。</p>
-          <p>自社プロダクトの開発に加え、業務自動化や社内ツール開発など、テクノロジーで課題を解決するお手伝いをしています。</p>
+          <p>Balance Worksは、仕事や暮らしの中で感じる「もっとこうなれば」を、使いやすい仕組みに変えていく個人の開発活動です。</p>
+          <p>自身の経験から生まれたアプリやWebサービスの開発と、社内業務の改善を手がけています。小さな手間を減らし、大切なことに時間を使えるように。使う人にとって身近で、役に立つものを育てていきます。</p>
         </div>
         <div class="stats fade-in">
           <div class="stat">
@@ -279,6 +266,26 @@
           </div>
         </div>
       </div>
+      <article class="profile fade-in" aria-labelledby="profile-name">
+        <img class="profile-image" src="images/izu.png" width="1254" height="1254" alt="眼鏡をかけてパソコンに向かう、izuのキャラクター" loading="lazy">
+        <div class="profile-copy">
+          <h3 class="profile-name" id="profile-name">izu</h3>
+          <p>Balance Worksの中の人。バックエンドエンジニアの経験を活かした、社内業務の改善が得意です。社内ツールの開発や業務の自動化、生成AIの活用を通じて、日々の仕事が少し楽になる仕組みをつくっています。</p>
+          <p>趣味は資産形成に関わる知識を学ぶことと、ランニング。FP2級・AFP・宅建士の資格を保有しています。こうした趣味や自身の経験をもとに、「マイ資産管理」と「Runshoe」を開発しました。</p>
+          <div class="skills-grid profile-skills">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React / React Native</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">生成AI</span>
+            <span class="skill-tag">kintone</span>
+            <span class="skill-tag">Google Apps Script</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
