@@ -1,0 +1,46 @@
+{
+  "shisan": [
+    {
+      "path": "images/apps/shisan-icon.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/74/f5/0e/74f50e9a-0a5e-49f3-3e4b-856b79b70d1f/Placeholder.mill/200x200Icon.ApSiOS01-75.webp"
+    },
+    {
+      "path": "images/apps/shisan-1.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ab/af/98/abaf987d-ea8b-ecd7-eae1-608c91ed4f21/01-assets.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/shisan-2.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/88/6f/45/886f45f7-aff2-597e-8861-474d356c0178/02-allocation.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/shisan-3.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/76/ce/cf/76cecf50-0d85-ce52-27d9-a66be1ddc955/03-dividends.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/shisan-4.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a2/58/76/a25876f8-9e0f-0c56-3c47-7d3b9908450a/04-history.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/shisan-5.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/50/bd/a6/50bda64e-deaa-d639-ddb2-a86466f5066d/05-input.png/600x1334bb.webp"
+    }
+  ],
+  "yutai": [
+    {
+      "path": "images/apps/yutai-icon.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b7/aa/84/b7aa846e-e15f-e821-c94c-8a667e782de5/Placeholder.mill/200x200Icon.ApSiOS01-75.webp"
+    },
+    {
+      "path": "images/apps/yutai-1.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cb/de/4f/cbde4f4d-343f-a6cf-6137-2dc1658aae52/01-holdings.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/yutai-2.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/66/cc/64/66cc6404-af9b-5349-eba2-4f44ad7b88dd/02-benefits.png/600x1334bb.webp"
+    },
+    {
+      "path": "images/apps/yutai-3.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ab/ec/00/abec00de-45b5-9f27-6073-ccf382061970/03-calendar.png/600x1334bb.webp"
+    }
+  ]
+}
